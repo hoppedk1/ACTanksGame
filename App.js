@@ -1,3 +1,4 @@
+
 class Player{
 
     constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,MovementSpeed,PlayerColour){
@@ -49,3 +50,15 @@ function Gamedrawer(){
 
 
 console.log("Hoppe er kæmpe homo hvis den her besked ikke skrives")
+
+
+
+function drawtestsquare(){
+
+    var canvas = document.getElementById("GameScene");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(0,0,150,75);
+}
+
+drawtestsquare
