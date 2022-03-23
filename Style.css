@@ -1,0 +1,15 @@
+#GameScene {
+
+    position: fixed;
+        left: 25%;
+        top: 5%;
+
+    width: 50%;
+    height: 75%;
+    
+    background-color: rgb(173, 173, 173);
+    outline-width: 5px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: solid
+
+}

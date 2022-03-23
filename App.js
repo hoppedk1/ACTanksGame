@@ -1,29 +1,51 @@
-function setup() {  // kører kun en gang, når programmet startes
-    createCanvas(950, 700); // størrelse på canvas, er gjort lidt større for at g
+class Player{
 
-    textAlign(CENTER, CENTER);
-}
+    constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,MovementSpeed,PlayerColour){
 
-function draw() {
-    background(0);
-    display();
-    
-}
+        this.PlayerXPosition = PlayerXPosition;
+        this.PlayerYPosition = PlayerYPosition;
+        this.PlayerWidth = PlayerWidth;
+        this.PlayerHeight = PlayerHeight;
+        this.MovementSpeed = MovementSpeed;
+        this.PlayerColour = PlayerColour;
 
-function display() {
-    fill(255);
-    textSize(12);
-    text("Score: "+score, width-80, 30);
-    text("Liv: " + liv, width-160, 30);
-    text("Missed  " + missed, width-240, 30)
-    
-    //Her skal vi sørge for at appelsinen bliver vist, hvis den skal vises
-    if(tid > 0) {
-        tid -= 1;
-    }
-    if (tid < 100) {
-        fill(col);
-        ellipse(x, y, rad*2, rad*2);
 
     }
+
+    /*PlayerMovement(){
+
+    }*/
+
+    DrawPlayer(){
+        var c = document.getElementById("GameScene")
+        var ctx = c.getContext("2d");
+
+        ctx.fillRect(this.PlayerXPosition, this.PlayerYPosition, this.PlayerWidth, this.PlayerHeight);
+        ctx.fillStyle = this.PlayerColour;
+        ctx.fill(); 
+
+
+    }
+
 }
+
+
+var Player1 = new Player(300,400,500,500,0,"Blue")
+
+window.onload = function () {
+    setInterval(Gamedrawer, 1000/60);
+};
+
+function Gamedrawer(){
+    var c = document.getElementById("GameScene")
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, 10000, 10000);
+
+    Player1.DrawPlayer()
+
+}
+
+
+
+
+console.log("Hoppe er kæmpe homo hvis den her besked ikke skrives")
