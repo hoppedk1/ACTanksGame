@@ -1,29 +1,25 @@
-
 class Player{
 
-    constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,MovementSpeed,PlayerColour){
+    constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour){
 
         this.PlayerXPosition = PlayerXPosition;
         this.PlayerYPosition = PlayerYPosition;
         this.PlayerWidth = PlayerWidth;
         this.PlayerHeight = PlayerHeight;
-        this.MovementSpeed = MovementSpeed;
         this.PlayerColour = PlayerColour;
+
 
 
     }
 
-    /*PlayerMovement(){
-
-    }*/
 
     DrawPlayer(){
+
         var c = document.getElementById("GameScene")
         var ctx = c.getContext("2d");
 
-        ctx.fillRect(this.PlayerXPosition, this.PlayerYPosition, this.PlayerWidth, this.PlayerHeight);
+        ctx.fillRect(this.PlayerXPosition+XSpeed, this.PlayerYPosition+YSpeed, this.PlayerWidth, this.PlayerHeight);
         ctx.fillStyle = this.PlayerColour;
-        ctx.fill(); 
 
 
     }
@@ -31,7 +27,10 @@ class Player{
 }
 
 
-var Player1 = new Player(300,400,500,500,0,"Blue")
+var Player1 = new Player(0,0,30,30,"#FF0000")
+var YSpeed = 0;
+var XSpeed = 0;
+
 
 window.onload = function () {
     setInterval(Gamedrawer, 1000/60);
@@ -43,22 +42,25 @@ function Gamedrawer(){
     ctx.clearRect(0, 0, 10000, 10000);
 
     Player1.DrawPlayer()
-
 }
 
 
 
+    document.addEventListener('keydown', function(event) {
+        if(event.keyCode == 87) {
+            YSpeed-=5
+        }
+        else if(event.keyCode == 83) {
+            YSpeed+=5
 
-console.log("Hoppe er kæmpe homo hvis den her besked ikke skrives")
+        }
 
+        else if(event.keyCode == 65) {
+            XSpeed-=5
+        }
 
+        else if(event.keyCode == 68) {
+            XSpeed+=5
+        }
+    });
 
-function drawtestsquare(){
-
-    var canvas = document.getElementById("GameScene");
-    var ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#FF0000";
-    ctx.fillRect(0,0,150,75);
-}
-
-drawtestsquare
