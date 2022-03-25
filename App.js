@@ -1,3 +1,19 @@
+var BlueTankPicture = new Image();
+BlueTankPicture.src = "BlueTank.png";
+
+var RedTankPicture = new Image();
+RedTankPicture.src = "RedTank.png";
+
+var GreenTankPicture = new Image();
+GreenTankPicture.src = "GreenTank.png";
+
+var YellowTankPicture = new Image();
+YellowTankPicture.src = "YellowTank.png";
+
+var LGBTTank = new Image();
+LGBTTank.src = "LGBTTank.png";
+
+
 class Player{
 
     constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour){
@@ -10,6 +26,7 @@ class Player{
 
 
 
+
     }
 
 
@@ -18,8 +35,9 @@ class Player{
         var c = document.getElementById("GameScene")
         var ctx = c.getContext("2d");
 
-        ctx.fillRect(this.PlayerXPosition+XSpeed, this.PlayerYPosition+YSpeed, this.PlayerWidth, this.PlayerHeight);
-        ctx.fillStyle = this.PlayerColour;
+        //ctx.fillRect(this.PlayerXPosition+XSpeed, this.PlayerYPosition+YSpeed, this.PlayerWidth, this.PlayerHeight);
+        debugger
+        ctx.drawImage(this.PlayerColour, this.PlayerXPosition+XSpeed, this.PlayerYPosition+YSpeed, this.PlayerWidth, this.PlayerHeight);
 
 
     }
@@ -27,7 +45,14 @@ class Player{
 }
 
 
-var Player1 = new Player(0,0,30,30,"#FF0000")
+var Player1 = new Player(0,0,20,30,BlueTankPicture)
+var Player2 = new Player(0,100,20,30,RedTankPicture)
+var Player3 = new Player(0,150,20,30,GreenTankPicture)
+var Player4 = new Player(0,50,20,30,YellowTankPicture)
+var Player5 = new Player(0,200,20,30,LGBTTank)
+
+
+
 var YSpeed = 0;
 var XSpeed = 0;
 
@@ -42,6 +67,11 @@ function Gamedrawer(){
     ctx.clearRect(0, 0, 10000, 10000);
 
     Player1.DrawPlayer()
+    Player2.DrawPlayer()
+    Player3.DrawPlayer()
+    Player4.DrawPlayer()
+    Player5.DrawPlayer()
+
 }
 
 
