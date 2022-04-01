@@ -14,7 +14,7 @@ var LGBTTank = new Image();
 LGBTTank.src = "LGBTTank.png";
 
 
-class Player{
+class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug af til enhver tank
 
     constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour,YSpeed,XSpeed){
 
@@ -117,8 +117,8 @@ var Player2 = new Player(0,100,20,30,RedTankPicture,0,0)
 //var Player4 = new Player(0,50,20,30,YellowTankPicture,0,0)
 //var Player5 = new Player(0,200,20,30,LGBTTank,0,0)
 
-window.onload = function () {
-    setInterval(Gamedrawer, 1000/60);
+window.onload = function () { // Her bliver der lopped ignnem imens selveste spillet kører, hvor vi blandt andet sætte fps
+    setInterval(Gamedrawer, 1000/60); // Her har vi delen af koden hvor fps'en på spillet og hermed funktionen "Gamedrawer" til at køre med 60 fps
 };
 
 function Gamedrawer(){
