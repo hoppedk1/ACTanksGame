@@ -35,35 +35,35 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
 
         //Player 1 movement
         if(IsKeyPressed(87)) {
-            Player1.YSpeed-=2
+            Player1.YSpeed-=2.5
         }
         if(IsKeyPressed(83)) {
-            Player1.YSpeed+=2
+            Player1.YSpeed+=2.5
 
         }
 
         if(IsKeyPressed(65)) {
-            Player1.XSpeed-=2
+            Player1.XSpeed-=2.5
         }
 
         if(IsKeyPressed(68)) {
-            Player1.XSpeed+=2
+            Player1.XSpeed+=2.5
         }
         //Player 2 movement
         if(IsKeyPressed(38)) {
-            Player2.YSpeed-=5
+            Player2.YSpeed-=2.5
         }
         if(IsKeyPressed(40)) {
-            Player2.YSpeed+=5
+            Player2.YSpeed+=2.5
 
         }
 
         if(IsKeyPressed(37)) {
-            Player2.XSpeed-=5
+            Player2.XSpeed-=2.5
         }
 
         if(IsKeyPressed(39)) {
-            Player2.XSpeed+=5
+            Player2.XSpeed+=2.5
         }
 /*
         //Player 3 movement
