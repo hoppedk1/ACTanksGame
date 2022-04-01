@@ -46,15 +46,14 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
 
 
 var Player1 = new Player(0,0,20,30,BlueTankPicture) // x placering, y placering, bredde, højde og farve.
-var Player2 = new Player(0,100,20,30,RedTankPicture) // x placering, y placering, bredde, højde og farve.
-var Player3 = new Player(0,150,20,30,GreenTankPicture) // x placering, y placering, bredde, højde og farve.
-var Player4 = new Player(0,50,20,30,YellowTankPicture) // x placering, y placering, bredde, højde og farve. 
-var Player5 = new Player(0,200,20,30,LGBTTank) // x placering, y placering, bredde, højde og farve.
+var Player2 = new Player(0,100,20,30,RedTankPicture) 
+var Player3 = new Player(0,150,20,30,GreenTankPicture) 
+var Player4 = new Player(0,50,20,30,YellowTankPicture)  
+var Player5 = new Player(0,200,20,30,LGBTTank) 
 
 
-
-var YSpeed = 0; // Variablen af en tanks hastighed i y aksen
-var XSpeed = 0; // variablen af en tanks hastighed i x aksen
+var YSpeed = 0;
+var XSpeed = 0; 
 
 
 window.onload = function () { // Her bliver der lopped ignnem imens selveste spillet kører, hvor vi blandt andet sætte fps
