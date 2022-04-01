@@ -14,15 +14,15 @@ var LGBTTank = new Image();
 LGBTTank.src = "LGBTTank.png";
 
 
-class Player{
+class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug af til enhver tank
 
-    constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour){
+    constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour){ // Her har vi vores tanks forskellige information vi vil udfylde når vi kalder den
 
-        this.PlayerXPosition = PlayerXPosition;
-        this.PlayerYPosition = PlayerYPosition;
-        this.PlayerWidth = PlayerWidth;
-        this.PlayerHeight = PlayerHeight;
-        this.PlayerColour = PlayerColour;
+        this.PlayerXPosition = PlayerXPosition; // Dens x placering i selveste spillet
+        this.PlayerYPosition = PlayerYPosition; // Dens y placering i selveste spillet
+        this.PlayerWidth = PlayerWidth; // Bredden, aka hvor lang tanken er på x aksen
+        this.PlayerHeight = PlayerHeight; // højten, aka hvor lang tanken er på y aksen
+        this.PlayerColour = PlayerColour; // Farven bruges her til at kalde hvilken farve, og hermed hvilket billed vi skal have over tanken
 
 
 
@@ -45,20 +45,20 @@ class Player{
 }
 
 
-var Player1 = new Player(0,0,20,30,BlueTankPicture)
-var Player2 = new Player(0,100,20,30,RedTankPicture)
-var Player3 = new Player(0,150,20,30,GreenTankPicture)
-var Player4 = new Player(0,50,20,30,YellowTankPicture)
-var Player5 = new Player(0,200,20,30,LGBTTank)
+var Player1 = new Player(0,0,20,30,BlueTankPicture) // x placering, y placering, bredde, højde og farve.
+var Player2 = new Player(0,100,20,30,RedTankPicture) // x placering, y placering, bredde, højde og farve.
+var Player3 = new Player(0,150,20,30,GreenTankPicture) // x placering, y placering, bredde, højde og farve.
+var Player4 = new Player(0,50,20,30,YellowTankPicture) // x placering, y placering, bredde, højde og farve. 
+var Player5 = new Player(0,200,20,30,LGBTTank) // x placering, y placering, bredde, højde og farve.
 
 
 
-var YSpeed = 0;
-var XSpeed = 0;
+var YSpeed = 0; // Variablen af en tanks hastighed i y aksen
+var XSpeed = 0; // variablen af en tanks hastighed i x aksen
 
 
-window.onload = function () {
-    setInterval(Gamedrawer, 1000/60);
+window.onload = function () { // Her bliver der lopped ignnem imens selveste spillet kører, hvor vi blandt andet sætte fps
+    setInterval(Gamedrawer, 1000/60); // Her har vi delen af koden hvor fps'en på spillet og hermed funktionen "Gamedrawer" til at køre med 60 fps
 };
 
 function Gamedrawer(){
