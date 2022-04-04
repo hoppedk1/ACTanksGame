@@ -14,13 +14,11 @@
 
 }
 
-body {
-    padding-top: 743px; /* y højde */
-    font-family: Arial;
-    background-color: rgb(255, 255, 255);
-    width: 500px;
-    margin: auto;
-    text-align: center;
+#Banner{
     position: fixed;
-    left: 17.8%;
-}   
+    left: 25%;
+    top: 81%;
+
+    width: 50%;
+    height: 18%;
+}
