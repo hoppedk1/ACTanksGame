@@ -73,6 +73,7 @@ class Bullet{
             Player1.AliveChecker = 0;
             this.BulletStatus = 0;
             Player1.PlayerRespawner(Player1)
+            this.BulletLifeTIme = 0
         }
         if (this.BulletYPosition > Player2.PlayerYPosition && this.BulletYPosition < Player2.PlayerYPosition+Player2.PlayerHeight &&
             this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth
@@ -80,6 +81,8 @@ class Bullet{
             Player2.AliveChecker = 0;
             this.BulletStatus = 0;
             Player2.PlayerRespawner(Player2)
+            this.BulletLifeTIme = 0
+
         }
     }
 }
