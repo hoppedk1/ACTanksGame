@@ -1,19 +1,19 @@
+//https://sebhastian.com/javascript-rotate-images/ Link til hjælp med rotation
+
 
 class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug af til enhver tank
 
     constructor(
-        PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour, //Player builder
-        YSpeed,XSpeed,MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, // PLayer movement
-        ShootKey //Player shooting
-        ){
-
+    PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour, //Player builder
+    MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, // PLayer movement
+    ShootKey, AliveChecker //Player shooting
+    )
+        {
         this.PlayerXPosition = PlayerXPosition;
         this.PlayerYPosition = PlayerYPosition;
         this.PlayerWidth = PlayerWidth;
         this.PlayerHeight = PlayerHeight;
         this.PlayerColour = PlayerColour;
-        this.YSpeed = YSpeed;
-        this.XSpeed = XSpeed;
         this.MoveUp = MoveUp;
         this.MoveDown = MoveDown;
         this.MoveRight = MoveRight;
@@ -23,13 +23,14 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         this.RightKey = RightKey;
         this.LeftKey = LeftKey;
         this.ShootKey = ShootKey;
+        this.AliveChecker = AliveChecker;
     }
 
     DrawPlayer(){
         var c = document.getElementById("GameScene")
         var ctx = c.getContext("2d");
-
-        ctx.drawImage(this.PlayerColour, this.PlayerXPosition+this.XSpeed, this.PlayerYPosition+this.YSpeed, this.PlayerWidth, this.PlayerHeight);
+        var PlayerImage = document.getElementById(this.PlayerColour);
+        ctx.drawImage(PlayerImage, this.PlayerXPosition, this.PlayerYPosition, this.PlayerWidth, this.PlayerHeight);
     }
     
     KeyPressed(Buttonclicked,PlayerNumber){
@@ -48,8 +49,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         }
         if (Buttonclicked.key === PlayerNumber.ShootKey){
             PlayerNumber.Shoot(PlayerNumber)
-        }
-        
+        } 
     }
 
     KeyReleased(ButtonReleased,PlayerNumber){
@@ -96,44 +96,29 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     }
 
     Shoot(PlayerNumber){
-        BulletCreator(PlayerNumber)
-        
+        if (PlayerNumber === Player1){
+            Player1Bullet.BulletCreator(PlayerNumber,Player1.PlayerXPosition, Player1.PlayerYPosition,Player1.PlayerWidth)
+        }
+        if (PlayerNumber === Player2){
+            Player2Bullet.BulletCreator(PlayerNumber,Player2.PlayerXPosition, Player2.PlayerYPosition,Player1.PlayerWidth)
+        }
     }
 
+    PlayerRespawner(NrofPLayer){
+        setTimeout(() => {
+            NrofPLayer.AliveChecker = 1;
 
+        }, 2000);
+    }
 }
-
-var Player1 = new Player(0,0,16,24,BlueTankPicture,0,0,false,false,false,false,'w','s','d','a','v')
-var Player2 = new Player(0,100,16,24,RedTankPicture,0,0,false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft','m')
-
-
-
-
-
-
+var Player1 = new Player(0,0,16,24,'Player1',false,false,false,false,'w','s','d','a','v',1)
+var Player2 = new Player(0,100,16,24,'Player2',false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft','m',1)
 
 document.addEventListener('keydown',function(event){
     Player1.KeyPressed(event,Player1)
     Player2.KeyPressed(event,Player2)
-
 });
 document.addEventListener('keyup',function(event){
     Player1.KeyReleased(event,Player1)
     Player2.KeyReleased(event,Player2)
-
 });
-/*document.addEventListener('keydown',Player2.KeyPressed(2));
-document.addEventListener('keyup',Player2.KeyReleased(2));*/
-
-
-
-
-
-
-
-
-
-
-
-
-
