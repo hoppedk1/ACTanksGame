@@ -30,10 +30,10 @@ function Gamedrawer(){
     Player2.DrawPlayer()
     Player1.Movement(Player1)
     Player2.Movement(Player2)
-
-
+    //Player1Bullet.BulletSpawner()
 
 }
+
 
 
 

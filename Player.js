@@ -1,16 +1,11 @@
-/*let Player1MoveUp = false
-let Player1MoveDown = false
-let Player1MoveRight = false
-let Player1MoveLeft = false
-
-let Player2MoveUp = false
-let Player2MoveDown = false
-let Player2MoveRight = false
-let Player2MoveLeft = false*/
 
 class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug af til enhver tank
 
-    constructor(PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour,YSpeed,XSpeed,MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey){
+    constructor(
+        PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour, //Player builder
+        YSpeed,XSpeed,MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, // PLayer movement
+        ShootKey //Player shooting
+        ){
 
         this.PlayerXPosition = PlayerXPosition;
         this.PlayerYPosition = PlayerYPosition;
@@ -26,14 +21,21 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         this.UpKey = UpKey;
         this.DownKey = DownKey;
         this.RightKey = RightKey;
-        this.LeftKey = LeftKey
+        this.LeftKey = LeftKey;
+        this.ShootKey = ShootKey;
+    }
+
+    DrawPlayer(){
+        var c = document.getElementById("GameScene")
+        var ctx = c.getContext("2d");
+
+        ctx.drawImage(this.PlayerColour, this.PlayerXPosition+this.XSpeed, this.PlayerYPosition+this.YSpeed, this.PlayerWidth, this.PlayerHeight);
     }
     
     KeyPressed(Buttonclicked,PlayerNumber){
 
         if (Buttonclicked.key === PlayerNumber.UpKey){
             PlayerNumber.MoveUp = true
-
         }
         if (Buttonclicked.key === PlayerNumber.DownKey){
             PlayerNumber.MoveDown = true
@@ -44,9 +46,11 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         if (Buttonclicked.key === PlayerNumber.LeftKey){
             PlayerNumber.MoveLeft = true
         }
-
+        if (Buttonclicked.key === PlayerNumber.ShootKey){
+            PlayerNumber.Shoot(PlayerNumber)
+        }
+        
     }
-
 
     KeyReleased(ButtonReleased,PlayerNumber){
         if (ButtonReleased.key === PlayerNumber.UpKey){
@@ -61,55 +65,46 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         if (ButtonReleased.key === PlayerNumber.LeftKey){
             PlayerNumber.MoveLeft = false
         }
-
     }
-
 
     Movement(PlayerNr){
 
         if(PlayerNr.MoveUp){
-            if (PlayerNr.PlayerYPosition-2 >= -3){
+            if (PlayerNr.PlayerYPosition-2 >= -4){
                 PlayerNr.PlayerYPosition-=2
             }
             else PlayerNr.MoveUp = false
         }
-
         if(PlayerNr.MoveDown){
             if (PlayerNr.PlayerYPosition+2 <= 131){
                 PlayerNr.PlayerYPosition+=2
             }
             else PlayerNr.MoveDown = false
         }
-
         if(PlayerNr.MoveRight){
             if (PlayerNr.PlayerXPosition+2 <= 287){
                 PlayerNr.PlayerXPosition+=2
             }
             else PlayerNr.MoveRight = false
-
         }
-        
         if(PlayerNr.MoveLeft){
             if (PlayerNr.PlayerXPosition-2 >= -3){
                 PlayerNr.PlayerXPosition-=2
             }
             else PlayerNr.MoveLeft = false
         }
-
-    };
-
-
-
-    DrawPlayer(){
-        var c = document.getElementById("GameScene")
-        var ctx = c.getContext("2d");
-
-        ctx.drawImage(this.PlayerColour, this.PlayerXPosition+this.XSpeed, this.PlayerYPosition+this.YSpeed, this.PlayerWidth, this.PlayerHeight);
     }
+
+    Shoot(PlayerNumber){
+        BulletCreator(PlayerNumber)
+        
+    }
+
+
 }
 
-var Player1 = new Player(0,0,16,24,BlueTankPicture,0,0,false,false,false,false,'w','s','d','a')
-var Player2 = new Player(0,100,16,24,RedTankPicture,0,0,false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft')
+var Player1 = new Player(0,0,16,24,BlueTankPicture,0,0,false,false,false,false,'w','s','d','a','v')
+var Player2 = new Player(0,100,16,24,RedTankPicture,0,0,false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft','m')
 
 
 
