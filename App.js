@@ -22,12 +22,13 @@ function Gamedrawer(){
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, 10000, 10000);
 
-    if (Player1.AliveChecker == 1){
-        Player1.DrawPlayer()
+    if (Player1.AliveChecker == true){
+        debugger
+        Player1.rotateAndPaintImage(ctx,BlueTankPicture,Player1.PlayerAngle,Player1 )
         Player1.Movement(Player1)
     }
     if (Player2.AliveChecker == 1){
-        Player2.DrawPlayer()
+        Player1.rotateAndPaintImage(ctx,RedTankPicture,Player2.PlayerAngle,Player2.PlayerXPosition,Player2.PlayerYPosition,0,0 )
         Player2.Movement(Player2)
     }
     if (Player1Bullet.BulletStatus == 1){
