@@ -24,3 +24,16 @@
 }
 
 
+#Player1{
+    width: 26px;
+    height: 26px;
+    background-color: rgb(196, 6, 6);
+    outline-width: 5px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: solid
+}
+
+#Player2{
+    width: 26px;
+    height: 26px;
+}

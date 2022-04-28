@@ -1,13 +1,15 @@
 //https://sebhastian.com/javascript-rotate-images/ Link til hjælp med rotation
 //https://stackoverflow.com/questions/3793397/html5-canvas-drawimage-with-at-an-angle mere hjælp
 
+//https://stackoverflow.com/questions/11450178/draw-a-canvas-into-another-canvas-not-working Canvas tegning
+//https://www.w3schools.com/jsref/dom_obj_canvas.asp
 
 class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug af til enhver tank
 
     constructor(
     PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour, //Player builder
     MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, PlayerAngle, // PLayer movement
-    ShootKey, AliveChecker //Player shooting
+    ShootKey, AliveChecker,Canvas //Player shooting
     )
         {
         this.PlayerXPosition = PlayerXPosition;
@@ -50,7 +52,6 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
             PlayerNumber.MoveLeft = true
         }
         if (Buttonclicked.key === PlayerNumber.ShootKey){
-            debugger
             PlayerNumber.Shoot(PlayerNumber)
         } 
     }
@@ -71,39 +72,71 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     }
 
     Movement(PlayerNr){
+        var c = document.getElementById("GameScene")
+        var ctx = c.getContext("2d");
 
         if(PlayerNr.MoveUp){
-            if (PlayerNr.PlayerYPosition-2){ //-4
+            var Radians = Math.PI/180; 
+
+            PlayerNr.PlayerXPosition -= 2*Math.sin(-PlayerNr.PlayerAngle*Radians)
+            PlayerNr.PlayerYPosition -= 2*Math.cos(-PlayerNr.PlayerAngle*Radians)
+            console.log(PlayerNr.PlayerAngle*Radians)
+
+
+
+
+            /*if (PlayerNr.PlayerYPosition-2){ //-4
                 PlayerNr.PlayerYPosition-=2
             }
-            else PlayerNr.MoveUp = false
+            else PlayerNr.MoveUp = false*/
         }
         if(PlayerNr.MoveDown){
-            if (PlayerNr.PlayerYPosition+2){ //131
+            var Radians = Math.PI/180; 
+
+            PlayerNr.PlayerXPosition += 2*Math.sin(PlayerNr.PlayerAngle*Radians)
+            PlayerNr.PlayerYPosition += 2*Math.cos(PlayerNr.PlayerAngle*Radians)
+
+            /*if (PlayerNr.PlayerYPosition+2){ //131
                 PlayerNr.PlayerYPosition+=2
             }
-            else PlayerNr.MoveDown = false
+            else PlayerNr.MoveDown = false*/
         }
         if(PlayerNr.MoveRight){
-            if (PlayerNr.PlayerXPosition+2){ //287
+            
+            PlayerNr.PlayerAngle = 4
+            
+            var Radians = Math.PI/180; 
+
+
+            ctx.translate( PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2, PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2 );
+            ctx.rotate( 4 * Radians );
+            ctx.translate(-(PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2), -(PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2) );
+            
+            /*if (PlayerNr.PlayerXPosition+2){ //287
                 PlayerNr.PlayerAngle-=4
             }
-            else PlayerNr.MoveRight = false
+            else PlayerNr.MoveRight = false*/
         }
         if(PlayerNr.MoveLeft){
-            if (PlayerNr.PlayerXPosition-2){ //-3
+            PlayerNr.PlayerAngle = 4
+            var Radians = Math.PI/180; 
+
+
+            ctx.translate( PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2, PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2 );
+            ctx.rotate( -4 * Radians );
+            ctx.translate(-(PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2), -(PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2) );
+            /*if (PlayerNr.PlayerXPosition-2){ //-3
                 PlayerNr.PlayerAngle+=4
             }
-            else PlayerNr.MoveLeft = false
+            else PlayerNr.MoveLeft = false*/
         }
     }
-    rotateAndPaintImage ( context, image, angleInRad,PlayerNrTeller ) {
-        var Radians = Math.PI/180; 
-        context.translate( PlayerNrTeller.PlayerXPosition, PlayerNrTeller.PlayerYPosition );
-        context.rotate( angleInRad*Radians );
+    rotateAndPaintImage ( context, image,PlayerNrTeller ) {
+        PlayerNrTeller.Canvas
+
         context.drawImage( image,PlayerNrTeller.PlayerXPosition, PlayerNrTeller.PlayerYPosition, PlayerNrTeller.PlayerWidth, PlayerNrTeller.PlayerHeight);
-        context.rotate( -angleInRad*Radians );
-        context.translate(-PlayerNrTeller.PlayerXPosition, -PlayerNrTeller.PlayerYPosition );
+        
+
       }
 
     Shoot(PlayerNumber){
