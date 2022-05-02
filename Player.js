@@ -9,7 +9,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     constructor(
     PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour, //Player builder
     MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, PlayerAngle, // PLayer movement
-    ShootKey, AliveChecker,Canvas //Player shooting
+    ShootKey, AliveChecker //Player shooting
     )
         {
         this.PlayerXPosition = PlayerXPosition;
@@ -103,14 +103,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         }
         if(PlayerNr.MoveRight){
             
-            PlayerNr.PlayerAngle = 4
-            
-            var Radians = Math.PI/180; 
-
-
-            ctx.translate( PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2, PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2 );
-            ctx.rotate( 4 * Radians );
-            ctx.translate(-(PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2), -(PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2) );
+            PlayerNr.PlayerAngle+=3
             
             /*if (PlayerNr.PlayerXPosition+2){ //287
                 PlayerNr.PlayerAngle-=4
@@ -118,26 +111,15 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
             else PlayerNr.MoveRight = false*/
         }
         if(PlayerNr.MoveLeft){
-            PlayerNr.PlayerAngle = 4
-            var Radians = Math.PI/180; 
 
+            PlayerNr.PlayerAngle-=3
 
-            ctx.translate( PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2, PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2 );
-            ctx.rotate( -4 * Radians );
-            ctx.translate(-(PlayerNr.PlayerXPosition + PlayerNr.PlayerWidth/2), -(PlayerNr.PlayerYPosition + PlayerNr.PlayerHeight/2) );
             /*if (PlayerNr.PlayerXPosition-2){ //-3
                 PlayerNr.PlayerAngle+=4
             }
             else PlayerNr.MoveLeft = false*/
         }
     }
-    rotateAndPaintImage ( context, image,PlayerNrTeller ) {
-        PlayerNrTeller.Canvas
-
-        context.drawImage( image,PlayerNrTeller.PlayerXPosition, PlayerNrTeller.PlayerYPosition, PlayerNrTeller.PlayerWidth, PlayerNrTeller.PlayerHeight);
-        
-
-      }
 
     Shoot(PlayerNumber){
         if (PlayerNumber === Player1){

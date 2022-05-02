@@ -27,14 +27,71 @@ function Gamedrawer(){
 
     ctx.clearRect(0, 0, 10000, 10000);
 
-    if (Player1.AliveChecker == true){
-        Player1.rotateAndPaintImage(ctx,BlueTankPicture,Player1 )
-        Player1.Movement(Player1)
-    }
-    if (Player2.AliveChecker == 1){
-        Player2.rotateAndPaintImage(ctx,RedTankPicture,Player2)
-        Player2.Movement(Player2)
-    }
+        var Radians = Math.PI/180; 
+
+        if (Player1.PlayerAngle != 0 || Player2.PlayerAngle != 0 ){
+
+
+            if (Player1.AliveChecker = 1 && Player1.PlayerAngle != 0 ){
+                Player1.Movement(Player1)
+
+
+                ctx.translate( Player1.PlayerXPosition + Player1.PlayerWidth/2, Player1.PlayerYPosition + Player1.PlayerHeight/2 );
+                ctx.rotate(Player1.PlayerAngle * Radians );
+                ctx.translate(-(Player1.PlayerXPosition + Player1.PlayerWidth/2), -(Player1.PlayerYPosition + Player1.PlayerHeight/2) );
+
+                
+                ctx.drawImage( BlueTankPicture,Player1.PlayerXPosition, Player1.PlayerYPosition, Player1.PlayerWidth, Player1.PlayerHeight);
+                
+                ctx.translate( Player1.PlayerXPosition + Player1.PlayerWidth/2, Player1.PlayerYPosition + Player1.PlayerHeight/2 );
+                ctx.rotate(-Player1.PlayerAngle * Radians );
+                ctx.translate(-(Player1.PlayerXPosition + Player1.PlayerWidth/2), -(Player1.PlayerYPosition + Player1.PlayerHeight/2) );
+
+
+            }
+
+            if (Player2.AliveChecker = 1 && Player2.PlayerAngle != 0 ){
+                Player2.Movement(Player2)
+                ctx.translate( Player2.PlayerXPosition + Player2.PlayerWidth/2, Player2.PlayerYPosition + Player2.PlayerHeight/2 );
+                ctx.rotate(Player2.PlayerAngle * Radians );
+                ctx.translate(-(Player2.PlayerXPosition + Player2.PlayerWidth/2), -(Player2.PlayerYPosition + Player2.PlayerHeight/2) );
+                
+                ctx.drawImage( RedTankPicture,Player2.PlayerXPosition, Player2.PlayerYPosition, Player2.PlayerWidth, Player2.PlayerHeight);
+                ctx.translate( Player2.PlayerXPosition + Player2.PlayerWidth/2, Player2.PlayerYPosition + Player2.PlayerHeight/2 );
+                ctx.rotate(-Player2.PlayerAngle * Radians );
+                ctx.translate(-(Player2.PlayerXPosition + Player2.PlayerWidth/2), -(Player2.PlayerYPosition + Player2.PlayerHeight/2) );
+
+
+            }
+    
+        } 
+        
+        if (Player1.PlayerAngle == 0 || Player2.PlayerAngle == 0){
+
+            if (Player1.AliveChecker = 1 && Player1.PlayerAngle == 0){
+                Player1.Movement(Player1)
+                Player1.Movement(Player1)
+
+
+                ctx.drawImage( BlueTankPicture,Player1.PlayerXPosition, Player1.PlayerYPosition, Player1.PlayerWidth, Player1.PlayerHeight);
+            }
+
+            if (Player2.AliveChecker = 1 && Player2.PlayerAngle == 0 ){
+                Player2.Movement(Player2)
+
+                ctx.drawImage( RedTankPicture,Player2.PlayerXPosition, Player2.PlayerYPosition, Player2.PlayerWidth, Player2.PlayerHeight);
+            }
+        } 
+        
+        //context.rotate(PlayerNrTeller.PlayerAngle * Radians );
+        //context.drawImage( image,PlayerNrTeller.PlayerXPosition, PlayerNrTeller.PlayerYPosition, PlayerNrTeller.PlayerWidth, PlayerNrTeller.PlayerHeight);
+        //context.rotate(-PlayerNrTeller.PlayerAngle * Radians );
+        //context.translate(-(PlayerNrTeller.PlayerXPosition + PlayerNrTeller.PlayerWidth/2), -(PlayerNrTeller.PlayerYPosition + PlayerNrTeller.PlayerHeight/2) );
+
+        
+
+
+    
     if (Player1Bullet.BulletStatus == 1){
         Player1Bullet.BulletMovement()
         Player1Bullet.BulletSpawner()

@@ -43,15 +43,20 @@ class Bullet{
     }
 
     BulletMovement(){
+        var Radians = Math.PI/180; 
 
-        this.BulletYPosition+=this.BulletSpeed
+        /*this.BulletYPosition+=this.BulletSpeed
 
         if (this.BulletYPosition+this.BulletSpeed < 0){
             this.BulletSpeed*= -1
         }
         if (this.BulletYPosition+this.BulletSpeed > 150){
             this.BulletSpeed*= -1
-        }
+        }*/
+
+
+        Player1Bullet.BulletXPosition += 2*Math.sin(Player1.PlayerAngle*Radians)
+        Player1Bullet.BulletYPosition += 2*Math.cos(Player1.PlayerAngle*Radians)
     }
 
     BulletTimer(BulletNr){
