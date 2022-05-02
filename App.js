@@ -24,18 +24,15 @@ window.onload = function () { // Her bliver der lopped ignnem imens selveste spi
 function Gamedrawer(){
     var c = document.getElementById("GameScene")
     var ctx = c.getContext("2d");
-    c1 = document.getElementById("Player1")
-    var ctx1 = c1.getContext("2d");
-    c2 = document.getElementById("Player2")
-    var ctx2 = c2.getContext("2d");
+
     ctx.clearRect(0, 0, 10000, 10000);
 
     if (Player1.AliveChecker == true){
-        Player1.rotateAndPaintImage(ctx1,BlueTankPicture,Player1 )
+        Player1.rotateAndPaintImage(ctx,BlueTankPicture,Player1 )
         Player1.Movement(Player1)
     }
     if (Player2.AliveChecker == 1){
-        Player2.rotateAndPaintImage(ctx2,RedTankPicture,Player2)
+        Player2.rotateAndPaintImage(ctx,RedTankPicture,Player2)
         Player2.Movement(Player2)
     }
     if (Player1Bullet.BulletStatus == 1){
