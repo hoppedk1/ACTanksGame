@@ -80,15 +80,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
 
             PlayerNr.PlayerXPosition -= 2*Math.sin(-PlayerNr.PlayerAngle*Radians)
             PlayerNr.PlayerYPosition -= 2*Math.cos(-PlayerNr.PlayerAngle*Radians)
-            console.log(PlayerNr.PlayerAngle*Radians)
 
-
-
-
-            /*if (PlayerNr.PlayerYPosition-2){ //-4
-                PlayerNr.PlayerYPosition-=2
-            }
-            else PlayerNr.MoveUp = false*/
         }
         if(PlayerNr.MoveDown){
             var Radians = Math.PI/180; 
@@ -96,28 +88,16 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
             PlayerNr.PlayerXPosition += 2*Math.sin(PlayerNr.PlayerAngle*Radians)
             PlayerNr.PlayerYPosition += 2*Math.cos(PlayerNr.PlayerAngle*Radians)
 
-            /*if (PlayerNr.PlayerYPosition+2){ //131
-                PlayerNr.PlayerYPosition+=2
-            }
-            else PlayerNr.MoveDown = false*/
         }
         if(PlayerNr.MoveRight){
             
             PlayerNr.PlayerAngle+=3
-            
-            /*if (PlayerNr.PlayerXPosition+2){ //287
-                PlayerNr.PlayerAngle-=4
-            }
-            else PlayerNr.MoveRight = false*/
+
         }
         if(PlayerNr.MoveLeft){
 
             PlayerNr.PlayerAngle-=3
 
-            /*if (PlayerNr.PlayerXPosition-2){ //-3
-                PlayerNr.PlayerAngle+=4
-            }
-            else PlayerNr.MoveLeft = false*/
         }
     }
 

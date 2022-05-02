@@ -55,8 +55,8 @@ class Bullet{
         }*/
 
 
-        Player1Bullet.BulletXPosition += 2*Math.sin(Player1.PlayerAngle*Radians)
-        Player1Bullet.BulletYPosition += 2*Math.cos(Player1.PlayerAngle*Radians)
+        Player1Bullet.BulletXPosition -= 2*Math.sin(Player1.PlayerAngle*Radians)
+        Player1Bullet.BulletYPosition -= 2*Math.cos(Player1.PlayerAngle*Radians)
     }
 
     BulletTimer(BulletNr){
