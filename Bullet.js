@@ -3,7 +3,7 @@ class Bullet{
     
     constructor(
         BulletXPosition,BulletYPosition, BulletWidth,BulletHeight,//Bullet builder
-        BulletStatus, BulletCount, BulletLifeTIme,BulletSpeed // bullet movement
+        BulletStatus, BulletCount, BulletLifeTIme,BulletXSpeed, BulletYSpeed, BulletAngle // bullet movement
     )
     {
         this.BulletXPosition = BulletXPosition;
@@ -13,25 +13,35 @@ class Bullet{
         this.BulletStatus = BulletStatus;
         this.BulletCount = BulletCount;
         this.BulletLifeTIme = BulletLifeTIme;
-        this.BulletSpeed = BulletSpeed;
+        this.BulletXSpeed = BulletXSpeed;
+        this.BulletYSpeed = BulletYSpeed;
+        this.BulletAngle = BulletAngle;
     }
 
-    BulletCreator(PlayerNRChecker,XSpawnPoint,YSpawnPoint,CannonCenterValue){
+    BulletCreator(PlayerNRChecker){
+        var Radians = Math.PI/180
 
         if (PlayerNRChecker === Player1){
             if (Player1Bullet.BulletStatus == 0){
                 Player1Bullet.BulletStatus = 1
-                Player1Bullet.BulletXPosition = XSpawnPoint+(CannonCenterValue/2)-1
-                Player1Bullet.BulletYPosition = YSpawnPoint
-                Player1Bullet.BulletSpeed = -1
+                Player1Bullet.BulletXPosition = Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
+                Player1Bullet.BulletYPosition = Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
+                Player1Bullet.BulletAngle = Player1.PlayerAngle
+                Player1Bullet.BulletXSpeed = 2*Math.sin(Player1Bullet.BulletAngle*Radians)
+                Player1Bullet.BulletYSpeed = 2*Math.cos(Player1Bullet.BulletAngle*Radians)
+
+
             }
         }
         if (PlayerNRChecker === Player2){
             if (Player2Bullet.BulletStatus == 0){
                 Player2Bullet.BulletStatus = 1
-                Player2Bullet.BulletXPosition = XSpawnPoint+(CannonCenterValue/2)-1
-                Player2Bullet.BulletYPosition = YSpawnPoint
-                Player2Bullet.BulletSpeed = -1
+                Player2Bullet.BulletXPosition = Player2.PlayerXPosition+(Player2.PlayerWidth/2)+Math.sin(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
+                Player2Bullet.BulletYPosition = Player2.PlayerYPosition+(Player2.PlayerHeight/2)-Math.cos(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
+                Player2Bullet.BulletAngle = Player2.PlayerAngle
+                Player2Bullet.BulletXSpeed = 2*Math.sin(Player2Bullet.BulletAngle*Radians)
+                Player2Bullet.BulletYSpeed = 2*Math.cos(Player2Bullet.BulletAngle*Radians)
+
             }  
         }
     }
@@ -40,31 +50,41 @@ class Bullet{
         var c = document.getElementById("GameScene")
         var ctx = c.getContext("2d");
         ctx.fillRect(this.BulletXPosition, this.BulletYPosition, this.BulletWidth, this.BulletHeight);
+        
     }
 
-    BulletMovement(){
-        var Radians = Math.PI/180; 
+    BulletMovement(BulletNr){
 
-        /*this.BulletYPosition+=this.BulletSpeed
+        BulletNr.BulletXPosition += BulletNr.BulletXSpeed
+        BulletNr.BulletYPosition -= BulletNr.BulletYSpeed
 
-        if (this.BulletYPosition+this.BulletSpeed < 0){
-            this.BulletSpeed*= -1
+        if (BulletNr.BulletYPosition <= 0){
+            BulletNr.BulletYSpeed*=-1
         }
-        if (this.BulletYPosition+this.BulletSpeed > 150){
-            this.BulletSpeed*= -1
-        }*/
+
+        if (BulletNr.BulletYPosition >= 150){
+            BulletNr.BulletYSpeed*=-1
+        }
+
+        if (BulletNr.BulletXPosition <= 0){
+            BulletNr.BulletXSpeed*=-1
+        }
+        if (BulletNr.BulletXPosition >= 300){
+            BulletNr.BulletXSpeed*=-1
+        }
 
 
-        Player1Bullet.BulletXPosition -= 2*Math.sin(Player1.PlayerAngle*Radians)
-        Player1Bullet.BulletYPosition -= 2*Math.cos(Player1.PlayerAngle*Radians)
+
+        
+        
     }
 
     BulletTimer(BulletNr){
 
-        if (BulletNr.BulletLifeTIme < 1000){
+        if (BulletNr.BulletLifeTIme < 100){
             BulletNr.BulletLifeTIme++
         } 
-        if (BulletNr.BulletLifeTIme == 1000){
+        if (BulletNr.BulletLifeTIme == 100){
             BulletNr.BulletStatus = 0
             BulletNr.BulletLifeTIme = 0
         } 
@@ -73,7 +93,7 @@ class Bullet{
     HitChecker(){
 
         if (this.BulletYPosition > Player1.PlayerYPosition && this.BulletYPosition < Player1.PlayerYPosition+Player1.PlayerHeight &&
-            this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth
+            this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth && this.BulletLifeTIme > 2
             ){
             Player1.AliveChecker = 0;
             this.BulletStatus = 0;
@@ -81,7 +101,7 @@ class Bullet{
             this.BulletLifeTIme = 0
         }
         if (this.BulletYPosition > Player2.PlayerYPosition && this.BulletYPosition < Player2.PlayerYPosition+Player2.PlayerHeight &&
-            this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth
+            this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth && this.BulletLifeTIme > 2
             ){
             Player2.AliveChecker = 0;
             this.BulletStatus = 0;
@@ -94,5 +114,5 @@ class Bullet{
 
 
 
-var Player1Bullet = new Bullet(0,0,2,2,0,0,0,-1)
-var Player2Bullet = new Bullet(0,0,2,2,0,0,0,-1)
+var Player1Bullet = new Bullet(0,0,2,2,0,0,0,-1,0)
+var Player2Bullet = new Bullet(0,0,2,2,0,0,0,-1,0)

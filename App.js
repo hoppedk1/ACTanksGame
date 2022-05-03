@@ -14,7 +14,6 @@ var LGBTTank = new Image();
 LGBTTank.src = "LGBTTank.png";
 
 window.onload = function () { // Her bliver der lopped ignnem imens selveste spillet kører, hvor vi blandt andet sætte fps
-
     setInterval(Gamedrawer, 1000/60); // Her har vi delen af koden hvor fps'en på spillet og hermed funktionen "Gamedrawer" til at køre med 60 fps
 };
 
@@ -23,10 +22,9 @@ function Gamedrawer(){
     var ctx = c.getContext("2d");
 
     ctx.clearRect(0, 0, 10000, 10000);
-
         var Radians = Math.PI/180; 
 
-            if (Player1.AliveChecker = 1){
+            if (Player1.AliveChecker == 1){
                 Player1.Movement(Player1)
 
 
@@ -41,7 +39,7 @@ function Gamedrawer(){
                 ctx.translate(-(Player1.PlayerXPosition + Player1.PlayerWidth/2), -(Player1.PlayerYPosition + Player1.PlayerHeight/2) );
             }
 
-            if (Player2.AliveChecker = 1 ){
+            if (Player2.AliveChecker == 1 ){
                 Player2.Movement(Player2)
                 ctx.translate( Player2.PlayerXPosition + Player2.PlayerWidth/2, Player2.PlayerYPosition + Player2.PlayerHeight/2 );
                 ctx.rotate(Player2.PlayerAngle * Radians );
@@ -55,15 +53,52 @@ function Gamedrawer(){
             }
     
     if (Player1Bullet.BulletStatus == 1){
-        Player1Bullet.BulletMovement()
+        Player1Bullet.BulletMovement(Player1Bullet)
         Player1Bullet.BulletSpawner()
         Player1Bullet.HitChecker()
         Player1Bullet.BulletTimer(Player1Bullet)
     }
     if (Player2Bullet.BulletStatus == 1){
-        Player2Bullet.BulletMovement()
+        Player2Bullet.BulletMovement(Player2Bullet)
         Player2Bullet.BulletSpawner()
         Player2Bullet.HitChecker()
         Player2Bullet.BulletTimer(Player2Bullet)
+        
     }
+    
+    /*var TankFrontXPos = Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
+    var TankFrontYPos = Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
+    ctx.FillStyle = 'Red'
+    ctx.fillRect(0,TankFrontYPos,5,5)
+    ctx.fillRect(TankFrontXPos,0,5,5)*/
+
+    /*
+    var TankBackXPos = Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(-Player1.PlayerHeight/2)
+    var TankBackYPos = Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
+    ctx.FillStyle = 'Red'
+    ctx.fillRect(0,TankBackYPos,5,5)
+    ctx.fillRect(TankBackXPos,0,5,5)
+    */
+
+    /*
+    var Radians = Math.PI/180; 
+
+    var TankCentrumXPos1 = Player1.PlayerXPosition+(Player1.PlayerWidth/2)
+    var TankCentrumYPos1 = Player1.PlayerYPosition+(Player1.PlayerHeight/2)
+    ctx.fillStyle = 'Green'
+    ctx.fillRect(TankCentrumXPos1,TankCentrumYPos1,3,3)
+
+    ctx.fillStyle = 'Red'
+    ctx.fillRect(
+    
+        Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+        Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+        3,3)
+        */
+
+    /*ctx.fillStyle = 'Red'
+    ctx.fillRect(0,0,300,150)*/
+
+    //ctx.fillRect(0,Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),5,5)
+    //ctx.fillRect(Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),0,5,5)
 }

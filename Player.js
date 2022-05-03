@@ -8,8 +8,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
 
     constructor(
     PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour, //Player builder
-    MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, PlayerAngle, // PLayer movement
-    ShootKey, AliveChecker //Player shooting
+    MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, PlayerAngle,PlayerYSpeed, PlayerXSpeed, // PLayer movement
+    ShootKey, AliveChecker, //Player shooting
     )
         {
         this.PlayerXPosition = PlayerXPosition;
@@ -28,6 +28,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         this.PlayerAngle = PlayerAngle;
         this.ShootKey = ShootKey;
         this.AliveChecker = AliveChecker;
+        this.PlayerYSpeed = PlayerYSpeed;
+        this.PlayerXSpeed = PlayerXSpeed;
     }
 
     /*DrawPlayer(){
@@ -40,6 +42,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     KeyPressed(Buttonclicked,PlayerNumber){
 
         if (Buttonclicked.key === PlayerNumber.UpKey){
+
             PlayerNumber.MoveUp = true
         }
         if (Buttonclicked.key === PlayerNumber.DownKey){
@@ -72,30 +75,82 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     }
 
     Movement(PlayerNr){
-        var c = document.getElementById("GameScene")
-        var ctx = c.getContext("2d");
-
         if(PlayerNr.MoveUp){
             var Radians = Math.PI/180; 
+            
 
-            PlayerNr.PlayerXPosition -= 2*Math.sin(-PlayerNr.PlayerAngle*Radians)
-            PlayerNr.PlayerYPosition -= 2*Math.cos(-PlayerNr.PlayerAngle*Radians)
+            if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)-Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) <= 0){
+                return PlayerNr.MoveUp = false
+            }
+    
+            if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)-Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) >= 150){
+                return PlayerNr.MoveUp = false
+            }
+    
+            if (PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) <= 0){
+                return PlayerNr.MoveUp = false
+            }
+            if (PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) >= 300){
+                return PlayerNr.MoveUp = false
+            }
+
+            PlayerNr.PlayerYSpeed = 2*Math.cos(-PlayerNr.PlayerAngle*Radians)
+            PlayerNr.PlayerXSpeed = 2*Math.sin(-PlayerNr.PlayerAngle*Radians)
+            
+            PlayerNr.PlayerXPosition -= PlayerNr.PlayerXSpeed
+            PlayerNr.PlayerYPosition -= PlayerNr.PlayerYSpeed
+
+            
+
+
+            
+
 
         }
         if(PlayerNr.MoveDown){
             var Radians = Math.PI/180; 
+            
 
-            PlayerNr.PlayerXPosition += 2*Math.sin(PlayerNr.PlayerAngle*Radians)
-            PlayerNr.PlayerYPosition += 2*Math.cos(PlayerNr.PlayerAngle*Radians)
+            if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)+Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) <= 0){
+                return PlayerNr.MoveDown = false
+            }
+    
+            if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)+Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) >= 150){
+                return PlayerNr.MoveDown = false
+            }
+    
+            if (PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) <= 0){
+                return PlayerNr.MoveDown = false
+            }
+            if (PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) >= 300){
+                return PlayerNr.MoveDown = false
+            }
+            
+            
+            PlayerNr.PlayerYSpeed = 2*Math.cos(PlayerNr.PlayerAngle*Radians)
+            PlayerNr.PlayerXSpeed = 2*Math.sin(PlayerNr.PlayerAngle*Radians)
+
+            PlayerNr.PlayerXPosition -= PlayerNr.PlayerXSpeed
+            PlayerNr.PlayerYPosition += PlayerNr.PlayerYSpeed
+
 
         }
         if(PlayerNr.MoveRight){
+            if (PlayerNr.PlayerAngle == 360 || PlayerNr.PlayerAngle == -360){
+                PlayerNr.PlayerAngle = 0
+
+            }
+
             
             PlayerNr.PlayerAngle+=3
 
         }
         if(PlayerNr.MoveLeft){
 
+            if (PlayerNr.PlayerAngle == 360 || PlayerNr.PlayerAngle == -360){
+                PlayerNr.PlayerAngle = 0
+
+            }
             PlayerNr.PlayerAngle-=3
 
         }
@@ -103,10 +158,10 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
 
     Shoot(PlayerNumber){
         if (PlayerNumber === Player1){
-            Player1Bullet.BulletCreator(PlayerNumber,Player1.PlayerXPosition, Player1.PlayerYPosition,Player1.PlayerWidth)
+            Player1Bullet.BulletCreator(PlayerNumber)
         }
         if (PlayerNumber === Player2){
-            Player2Bullet.BulletCreator(PlayerNumber,Player2.PlayerXPosition, Player2.PlayerYPosition,Player1.PlayerWidth)
+            Player2Bullet.BulletCreator(PlayerNumber)
         }
     }
 
@@ -118,8 +173,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     }
 }
 
-var Player1 = new Player(0,0,16,24,'Player1',false,false,false,false,'w','s','d','a',0,'v',1)
-var Player2 = new Player(0,100,16,24,'Player2',false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft',0,'m',1)
+var Player1 = new Player(0,0,16,24,'Player1',false,false,false,false,'w','s','d','a',0,0,0,'v',1)
+var Player2 = new Player(0,100,16,24,'Player2',false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft',0,0,0,'m',1)
 
 document.addEventListener('keydown',function(event){
     Player1.KeyPressed(event,Player1)
