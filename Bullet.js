@@ -27,8 +27,8 @@ class Bullet{
                 Player1Bullet.BulletXPosition = Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
                 Player1Bullet.BulletYPosition = Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
                 Player1Bullet.BulletAngle = Player1.PlayerAngle
-                Player1Bullet.BulletXSpeed = 2*Math.sin(Player1Bullet.BulletAngle*Radians)
-                Player1Bullet.BulletYSpeed = 2*Math.cos(Player1Bullet.BulletAngle*Radians)
+                Player1Bullet.BulletXSpeed = 2*Math.sin(Player1Bullet.BulletAngle*Radians)*1.5
+                Player1Bullet.BulletYSpeed = 2*Math.cos(Player1Bullet.BulletAngle*Radians)*1.5
 
 
             }
@@ -39,8 +39,8 @@ class Bullet{
                 Player2Bullet.BulletXPosition = Player2.PlayerXPosition+(Player2.PlayerWidth/2)+Math.sin(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
                 Player2Bullet.BulletYPosition = Player2.PlayerYPosition+(Player2.PlayerHeight/2)-Math.cos(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
                 Player2Bullet.BulletAngle = Player2.PlayerAngle
-                Player2Bullet.BulletXSpeed = 2*Math.sin(Player2Bullet.BulletAngle*Radians)
-                Player2Bullet.BulletYSpeed = 2*Math.cos(Player2Bullet.BulletAngle*Radians)
+                Player2Bullet.BulletXSpeed = 2*Math.sin(Player2Bullet.BulletAngle*Radians)*1.5
+                Player2Bullet.BulletYSpeed = 2*Math.cos(Player2Bullet.BulletAngle*Radians)*1.5
 
             }  
         }
@@ -93,7 +93,7 @@ class Bullet{
     HitChecker(){
 
         if (this.BulletYPosition > Player1.PlayerYPosition && this.BulletYPosition < Player1.PlayerYPosition+Player1.PlayerHeight &&
-            this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth && this.BulletLifeTIme > 2.5
+            this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth && this.BulletLifeTIme > 1
             && Player1.AliveChecker == 1){
             Player1.AliveChecker = 0;
             Player2.Score++;
@@ -102,7 +102,7 @@ class Bullet{
             this.BulletLifeTIme = 0
         }
         if (this.BulletYPosition > Player2.PlayerYPosition && this.BulletYPosition < Player2.PlayerYPosition+Player2.PlayerHeight &&
-            this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth && this.BulletLifeTIme > 2.5
+            this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth && this.BulletLifeTIme > 1
             && Player2.AliveChecker == 1){
             Player2.AliveChecker = 0;
             Player1.Score++;
