@@ -81,10 +81,10 @@ class Bullet{
 
     BulletTimer(BulletNr){
 
-        if (BulletNr.BulletLifeTIme < 100){
+        if (BulletNr.BulletLifeTIme < 150){
             BulletNr.BulletLifeTIme++
         } 
-        if (BulletNr.BulletLifeTIme == 100){
+        if (BulletNr.BulletLifeTIme == 150){
             BulletNr.BulletStatus = 0
             BulletNr.BulletLifeTIme = 0
         } 
@@ -93,8 +93,8 @@ class Bullet{
     HitChecker(){
 
         if (this.BulletYPosition > Player1.PlayerYPosition && this.BulletYPosition < Player1.PlayerYPosition+Player1.PlayerHeight &&
-            this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth && this.BulletLifeTIme > 2
-            ){
+            this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth && this.BulletLifeTIme > 2.5
+            && Player1.AliveChecker == 1){
             Player1.AliveChecker = 0;
             Player2.Score++;
             this.BulletStatus = 0;
@@ -102,8 +102,8 @@ class Bullet{
             this.BulletLifeTIme = 0
         }
         if (this.BulletYPosition > Player2.PlayerYPosition && this.BulletYPosition < Player2.PlayerYPosition+Player2.PlayerHeight &&
-            this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth && this.BulletLifeTIme > 2
-            ){
+            this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth && this.BulletLifeTIme > 2.5
+            && Player2.AliveChecker == 1){
             Player2.AliveChecker = 0;
             Player1.Score++;
             this.BulletStatus = 0;

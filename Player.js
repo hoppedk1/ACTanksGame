@@ -55,7 +55,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         if (Buttonclicked.key === PlayerNumber.LeftKey){
             PlayerNumber.MoveLeft = true
         }
-        if (Buttonclicked.key === PlayerNumber.ShootKey){
+        if (Buttonclicked.key === PlayerNumber.ShootKey && PlayerNumber.AliveChecker == 1){
             PlayerNumber.Shoot(PlayerNumber)
         } 
     }
@@ -169,6 +169,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     PlayerRespawner(NrofPLayer){
         setTimeout(() => {
             NrofPLayer.AliveChecker = 1;
+            NrofPLayer.PlayerXPosition = Math.random()*280
+            NrofPLayer.PlayerYPosition = Math.random()*130
 
         }, 2000);
     }

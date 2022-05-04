@@ -36,7 +36,6 @@ function Gamedrawer(){
     var c = document.getElementById("GameScene")
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, 10000, 10000);
-
         var Radians = Math.PI/180; 
 
             if (Player1.AliveChecker == 1){
