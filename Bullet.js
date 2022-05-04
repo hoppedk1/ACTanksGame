@@ -96,6 +96,7 @@ class Bullet{
             this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth && this.BulletLifeTIme > 2
             ){
             Player1.AliveChecker = 0;
+            Player2.Score++;
             this.BulletStatus = 0;
             Player1.PlayerRespawner(Player1)
             this.BulletLifeTIme = 0
@@ -104,6 +105,7 @@ class Bullet{
             this.BulletXPosition > Player2.PlayerXPosition && this.BulletXPosition < Player2.PlayerXPosition+Player2.PlayerWidth && this.BulletLifeTIme > 2
             ){
             Player2.AliveChecker = 0;
+            Player1.Score++;
             this.BulletStatus = 0;
             Player2.PlayerRespawner(Player2)
             this.BulletLifeTIme = 0

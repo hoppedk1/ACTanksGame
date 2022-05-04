@@ -14,6 +14,22 @@
 
 }
 
+#ScorePlate {
+
+    position: fixed;
+        left: 10%;
+        top: 5%;
+
+    width: 10%;
+    height: 25%;
+    
+    background-color: rgb(173, 173, 173);
+    outline-width: 5px;
+    outline-color: rgb(0, 0, 0);
+    outline-style: solid
+
+}
+
 #Banner{
     position: fixed;
     left: 25%;

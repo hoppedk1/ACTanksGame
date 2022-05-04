@@ -9,7 +9,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     constructor(
     PlayerXPosition,PlayerYPosition, PlayerWidth,PlayerHeight,PlayerColour, //Player builder
     MoveUp,MoveDown,MoveRight,MoveLeft,UpKey,DownKey,RightKey,LeftKey, PlayerAngle,PlayerYSpeed, PlayerXSpeed, // PLayer movement
-    ShootKey, AliveChecker, //Player shooting
+    ShootKey, AliveChecker,Score, //Player shooting
     )
         {
         this.PlayerXPosition = PlayerXPosition;
@@ -30,6 +30,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         this.AliveChecker = AliveChecker;
         this.PlayerYSpeed = PlayerYSpeed;
         this.PlayerXSpeed = PlayerXSpeed;
+        this.Score = Score;
     }
 
     /*DrawPlayer(){
@@ -173,8 +174,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     }
 }
 
-var Player1 = new Player(0,0,16,24,'Player1',false,false,false,false,'w','s','d','a',0,0,0,'v',1)
-var Player2 = new Player(0,100,16,24,'Player2',false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft',0,0,0,'m',1)
+var Player1 = new Player(0,0,16,24,'Player1',false,false,false,false,'w','s','d','a',0,0,0,'v',1,0)
+var Player2 = new Player(0,100,16,24,'Player2',false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft',0,0,0,'m',1,0)
 
 document.addEventListener('keydown',function(event){
     Player1.KeyPressed(event,Player1)

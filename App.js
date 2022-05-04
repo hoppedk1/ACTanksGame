@@ -13,15 +13,30 @@ YellowTankPicture.src = "YellowTank.png";
 var LGBTTank = new Image();
 LGBTTank.src = "LGBTTank.png";
 
+function Score(color, x, y,text) {
+    var c = document.getElementById("ScorePlate")
+    var ctx = c.getContext("2d");
+
+        ctx.font = '20px Arial';
+        ctx.fillStyle = color;
+        ctx.fillText(text, x, y);
+    }
 window.onload = function () { // Her bliver der lopped ignnem imens selveste spillet kører, hvor vi blandt andet sætte fps
     setInterval(Gamedrawer, 1000/60); // Her har vi delen af koden hvor fps'en på spillet og hermed funktionen "Gamedrawer" til at køre med 60 fps
 };
 
 function Gamedrawer(){
-    var c = document.getElementById("GameScene")
+    var c = document.getElementById("ScorePlate")
     var ctx = c.getContext("2d");
 
     ctx.clearRect(0, 0, 10000, 10000);
+    Score('Black',25,30,"Player 1 Score:  " + Player1.Score)
+    Score('Black',25,60,"Player 2 Score:  " + Player2.Score)
+
+    var c = document.getElementById("GameScene")
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, 10000, 10000);
+
         var Radians = Math.PI/180; 
 
             if (Player1.AliveChecker == 1){
