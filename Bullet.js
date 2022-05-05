@@ -77,22 +77,6 @@ class Bullet{
         
 
 
-        /*if (BulletNr.BulletYPosition <= 0){
-            BulletNr.BulletYSpeed*=-1
-        }
-
-        if (BulletNr.BulletYPosition >= 150){
-            BulletNr.BulletYSpeed*=-1
-        }
-
-        if (BulletNr.BulletXPosition <= 0){
-            BulletNr.BulletXSpeed*=-1
-        }
-        if (BulletNr.BulletXPosition >= 300){
-            BulletNr.BulletXSpeed*=-1
-        }*/
-
-
 
         
         
