@@ -78,8 +78,16 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     Movement(PlayerNr){
         if(PlayerNr.MoveUp){
             var Radians = Math.PI/180; 
-            
-
+            for (var j = 0; j < WallsArr.length; j++){
+                if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)-Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) > WallsArr[j].Ypos &&
+                    PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)-Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) < WallsArr[j].Ypos+WallsArr[j].Height &&
+                    PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) >= WallsArr[j].Xpos &&
+                    PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) <= WallsArr[j].Xpos+WallsArr[j].Width){
+                    
+                    return PlayerNr.MoveUp = false
+                }
+            }
+/*
             if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)-Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) <= 0){
                 return PlayerNr.MoveUp = false
             }
@@ -94,7 +102,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
             if (PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) >= 300){
                 return PlayerNr.MoveUp = false
             }
-
+*/
             PlayerNr.PlayerYSpeed = 2*Math.cos(-PlayerNr.PlayerAngle*Radians)*0.8
             PlayerNr.PlayerXSpeed = 2*Math.sin(-PlayerNr.PlayerAngle*Radians)*0.8
             
@@ -110,8 +118,17 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         }
         if(PlayerNr.MoveDown){
             var Radians = Math.PI/180; 
-            
+            for (var j = 0; j < WallsArr.length; j++){
+                if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)+Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) > WallsArr[j].Ypos &&
+                    PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)+Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) < WallsArr[j].Ypos+WallsArr[j].Height &&
+                    PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) >= WallsArr[j].Xpos &&
+                    PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) <= WallsArr[j].Xpos+WallsArr[j].Width){
+                    
+                    return PlayerNr.DownKey = false
+                }
+            }
 
+/*
             if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)+Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) <= 0){
                 return PlayerNr.MoveDown = false
             }
@@ -125,7 +142,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
             }
             if (PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) >= 300){
                 return PlayerNr.MoveDown = false
-            }
+            }*/
             
             
             PlayerNr.PlayerYSpeed = 2*Math.cos(PlayerNr.PlayerAngle*Radians)*0.8
@@ -176,8 +193,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
     }
 }
 
-var Player1 = new Player(0,0,16,24,'Player1',false,false,false,false,'w','s','d','a',0,0,0,'v',1,0)
-var Player2 = new Player(0,100,16,24,'Player2',false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft',0,0,0,'m',1,0)
+var Player1 = new Player(5,0,16,24,'Player1',false,false,false,false,'w','s','d','a',0,0,0,'v',1,0)
+var Player2 = new Player(5,100,16,24,'Player2',false,false,false,false,'ArrowUp','ArrowDown','ArrowRight','ArrowLeft',0,0,0,'m',1,0)
 
 document.addEventListener('keydown',function(event){
     Player1.KeyPressed(event,Player1)
