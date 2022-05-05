@@ -39,8 +39,8 @@ class Bullet{
                 Player2Bullet.BulletXPosition = Player2.PlayerXPosition+(Player2.PlayerWidth/2)+Math.sin(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
                 Player2Bullet.BulletYPosition = Player2.PlayerYPosition+(Player2.PlayerHeight/2)-Math.cos(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
                 Player2Bullet.BulletAngle = Player2.PlayerAngle
-                Player2Bullet.BulletXSpeed = 2*Math.sin(Player2Bullet.BulletAngle*Radians)*1.2
-                Player2Bullet.BulletYSpeed = 2*Math.cos(Player2Bullet.BulletAngle*Radians)*1.2
+                Player2Bullet.BulletXSpeed = 2*Math.sin(Player2Bullet.BulletAngle*Radians)*1.3
+                Player2Bullet.BulletYSpeed = 2*Math.cos(Player2Bullet.BulletAngle*Radians)*1.3
 
             }  
         }
