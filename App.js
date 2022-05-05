@@ -121,4 +121,79 @@ function Gamedrawer(){
 
     //ctx.fillRect(0,Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),5,5)
     //ctx.fillRect(Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),0,5,5)
+
+
+    // Collision with wall tester
+    var Radians = Math.PI/180; 
+
+    /*ctx.fillStyle = 'Red'
+    ctx.fillRect(   Player1.PlayerXPosition,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'yellow'
+    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'Green'
+    ctx.fillRect(   Player1.PlayerXPosition,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'Black'
+    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'Cyan'
+    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+                    Player1.PlayerYPosition,
+                    
+                    3,3)
+    ctx.fillStyle = 'Orange'
+    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+                    Player1.PlayerYPosition,
+                    
+                    2,2)*/
+
+
+    ctx.fillStyle = 'Red'
+    ctx.fillRect(   Player1.PlayerXPosition,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'yellow'
+    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'Green'
+    ctx.fillRect(   Player1.PlayerXPosition,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'Black'
+    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+                    
+                    2,2)
+
+    ctx.fillStyle = 'Cyan'
+    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+                    Player1.PlayerYPosition,
+                    
+                    3,3)
+    ctx.fillStyle = 'Orange'
+    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+                    Player1.PlayerYPosition,
+                    
+                    2,2)
 }

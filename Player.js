@@ -79,10 +79,24 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
         if(PlayerNr.MoveUp){
             var Radians = Math.PI/180; 
             for (var j = 0; j < WallsArr.length; j++){
-                if (PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)-Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) > WallsArr[j].Ypos &&
-                    PlayerNr.PlayerYPosition+(PlayerNr.PlayerHeight/2)-Math.cos(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) < WallsArr[j].Ypos+WallsArr[j].Height &&
-                    PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) >= WallsArr[j].Xpos &&
-                    PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(PlayerNr.PlayerHeight/2) <= WallsArr[j].Xpos+WallsArr[j].Width){
+                if (Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.8 > WallsArr[j].Ypos &&
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.8 < WallsArr[j].Ypos+WallsArr[j].Height &&
+                    Player1.PlayerXPosition >= WallsArr[j].Xpos &&
+                    Player1.PlayerXPosition <= WallsArr[j].Xpos+WallsArr[j].Width &&
+                    
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.8 > WallsArr[j].Ypos &&
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.8 < WallsArr[j].Ypos+WallsArr[j].Height &&
+                    Player1.PlayerXPosition+Player1.PlayerWidth >= WallsArr[j].Xpos &&
+                    Player1.PlayerXPosition+Player1.PlayerWidth <= WallsArr[j].Xpos+WallsArr[j].Width
+                    
+                    
+                    
+                    
+                    
+                    )
+                    
+                    
+                    {
                     
                     return PlayerNr.MoveUp = false
                 }
