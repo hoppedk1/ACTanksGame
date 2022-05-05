@@ -27,8 +27,8 @@ class Bullet{
                 Player1Bullet.BulletXPosition = Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
                 Player1Bullet.BulletYPosition = Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
                 Player1Bullet.BulletAngle = Player1.PlayerAngle
-                Player1Bullet.BulletXSpeed = 2*Math.sin(Player1Bullet.BulletAngle*Radians)*1.5
-                Player1Bullet.BulletYSpeed = 2*Math.cos(Player1Bullet.BulletAngle*Radians)*1.5
+                Player1Bullet.BulletXSpeed = 2*Math.sin(Player1Bullet.BulletAngle*Radians)*1.3
+                Player1Bullet.BulletYSpeed = 2*Math.cos(Player1Bullet.BulletAngle*Radians)*1.3
 
 
             }
@@ -39,8 +39,8 @@ class Bullet{
                 Player2Bullet.BulletXPosition = Player2.PlayerXPosition+(Player2.PlayerWidth/2)+Math.sin(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
                 Player2Bullet.BulletYPosition = Player2.PlayerYPosition+(Player2.PlayerHeight/2)-Math.cos(+Player2.PlayerAngle*Radians)*(Player2.PlayerHeight/2)
                 Player2Bullet.BulletAngle = Player2.PlayerAngle
-                Player2Bullet.BulletXSpeed = 2*Math.sin(Player2Bullet.BulletAngle*Radians)*1.5
-                Player2Bullet.BulletYSpeed = 2*Math.cos(Player2Bullet.BulletAngle*Radians)*1.5
+                Player2Bullet.BulletXSpeed = 2*Math.sin(Player2Bullet.BulletAngle*Radians)*1.2
+                Player2Bullet.BulletYSpeed = 2*Math.cos(Player2Bullet.BulletAngle*Radians)*1.2
 
             }  
         }
@@ -58,7 +58,26 @@ class Bullet{
         BulletNr.BulletXPosition += BulletNr.BulletXSpeed
         BulletNr.BulletYPosition -= BulletNr.BulletYSpeed
 
-        if (BulletNr.BulletYPosition <= 0){
+        for (var j = 0; j < WallsArr.length; j++){
+          
+            if (BulletNr.BulletYPosition > WallsArr[j].Ypos && BulletNr.BulletYPosition < WallsArr[j].Ypos+WallsArr[j].Height &&
+                BulletNr.BulletXPosition >= WallsArr[j].Xpos && BulletNr.BulletXPosition <= WallsArr[j].Xpos+WallsArr[j].Width){
+                 
+                if (WallsArr[j].Direction == "Vandret") {
+                    BulletNr.BulletYSpeed*=-1
+
+                }
+                if (WallsArr[j].Direction == "Lodret") {
+                    BulletNr.BulletXSpeed*=-1
+
+                }
+            }
+
+        }
+        
+
+
+        /*if (BulletNr.BulletYPosition <= 0){
             BulletNr.BulletYSpeed*=-1
         }
 
@@ -71,7 +90,7 @@ class Bullet{
         }
         if (BulletNr.BulletXPosition >= 300){
             BulletNr.BulletXSpeed*=-1
-        }
+        }*/
 
 
 
@@ -92,7 +111,7 @@ class Bullet{
 
     HitChecker(){
 
-        if (this.BulletYPosition > Player1.PlayerYPosition && this.BulletYPosition < Player1.PlayerYPosition+Player1.PlayerHeight &&
+       if (this.BulletYPosition > Player1.PlayerYPosition && this.BulletYPosition < Player1.PlayerYPosition+Player1.PlayerHeight &&
             this.BulletXPosition > Player1.PlayerXPosition && this.BulletXPosition < Player1.PlayerXPosition+Player1.PlayerWidth && this.BulletLifeTIme > 1
             && Player1.AliveChecker == 1){
             Player1.AliveChecker = 0;

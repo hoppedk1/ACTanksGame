@@ -95,8 +95,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
                 return PlayerNr.MoveUp = false
             }
 
-            PlayerNr.PlayerYSpeed = 2*Math.cos(-PlayerNr.PlayerAngle*Radians)
-            PlayerNr.PlayerXSpeed = 2*Math.sin(-PlayerNr.PlayerAngle*Radians)
+            PlayerNr.PlayerYSpeed = 2*Math.cos(-PlayerNr.PlayerAngle*Radians)*0.8
+            PlayerNr.PlayerXSpeed = 2*Math.sin(-PlayerNr.PlayerAngle*Radians)*0.8
             
             PlayerNr.PlayerXPosition -= PlayerNr.PlayerXSpeed
             PlayerNr.PlayerYPosition -= PlayerNr.PlayerYSpeed
@@ -128,8 +128,8 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
             }
             
             
-            PlayerNr.PlayerYSpeed = 2*Math.cos(PlayerNr.PlayerAngle*Radians)
-            PlayerNr.PlayerXSpeed = 2*Math.sin(PlayerNr.PlayerAngle*Radians)
+            PlayerNr.PlayerYSpeed = 2*Math.cos(PlayerNr.PlayerAngle*Radians)*0.8
+            PlayerNr.PlayerXSpeed = 2*Math.sin(PlayerNr.PlayerAngle*Radians)*0.8
 
             PlayerNr.PlayerXPosition -= PlayerNr.PlayerXSpeed
             PlayerNr.PlayerYPosition += PlayerNr.PlayerYSpeed

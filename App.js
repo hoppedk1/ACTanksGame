@@ -13,6 +13,7 @@ YellowTankPicture.src = "YellowTank.png";
 var LGBTTank = new Image();
 LGBTTank.src = "LGBTTank.png";
 
+
 function Score(color, x, y,text) {
     var c = document.getElementById("ScorePlate")
     var ctx = c.getContext("2d");
@@ -36,7 +37,12 @@ function Gamedrawer(){
     var c = document.getElementById("GameScene")
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, 10000, 10000);
-        var Radians = Math.PI/180; 
+        var Radians = Math.PI/180;  
+            var j = 0;
+            for (j = 0; j < WallsArr.length; j++){
+                WallsArr[j].DrawWall();
+
+            }
 
             if (Player1.AliveChecker == 1){
                 Player1.Movement(Player1)
