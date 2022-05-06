@@ -135,7 +135,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
                     PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) >= WallsArr[j].Xpos &&
                     PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) <= WallsArr[j].Xpos+WallsArr[j].Width){
                     
-                    return PlayerNr.DownKey = false
+                    return PlayerNr.MoveDown = false // 05-05 Hoppe, Sagde PlayerNr.KeyDown = false, hvilket ikke resettede din movement, hvilket gjorde tanken Fransk.
                     
                 }
             }
