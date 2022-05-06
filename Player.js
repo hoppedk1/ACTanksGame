@@ -136,6 +136,7 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
                     PlayerNr.PlayerXPosition+(PlayerNr.PlayerWidth/2)+Math.sin(+PlayerNr.PlayerAngle*Radians)*(-PlayerNr.PlayerHeight/2) <= WallsArr[j].Xpos+WallsArr[j].Width){
                     
                     return PlayerNr.DownKey = false
+                    
                 }
             }
 

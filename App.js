@@ -31,8 +31,8 @@ function Gamedrawer(){
     var ctx = c.getContext("2d");
 
     ctx.clearRect(0, 0, 10000, 10000);
-    Score('Black',25,30,"Player 1 Score:  " + Player1.Score)
-    Score('Black',25,60,"Player 2 Score:  " + Player2.Score)
+    Score('Blue',25,40,"Player 1 Score:  " + Player1.Score)
+    Score('Red',25,120,"Player 2 Score:  " + Player2.Score)
 
     var c = document.getElementById("GameScene")
     var ctx = c.getContext("2d");
