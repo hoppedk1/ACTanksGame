@@ -162,13 +162,20 @@ function Gamedrawer(){
                     2,2)*/
 
 
+    //ctx.fillStyle = 'Red'
+    //ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+    //                Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+    //                
+    //                2,2)
+
     ctx.fillStyle = 'Red'
-    ctx.fillRect(   Player1.PlayerXPosition,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
+    ctx.fillRect(   Player1.PlayerXPosition+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+                    Player1.PlayerYPosition,
                     
                     2,2)
 
-    ctx.fillStyle = 'yellow'
+
+    /*ctx.fillStyle = 'yellow'
     ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
                     Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
                     
@@ -187,7 +194,7 @@ function Gamedrawer(){
                     2,2)
 
     ctx.fillStyle = 'Cyan'
-    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
+    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.5,
                     Player1.PlayerYPosition,
                     
                     3,3)
@@ -195,5 +202,5 @@ function Gamedrawer(){
     ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
                     Player1.PlayerYPosition,
                     
-                    2,2)
+                    2,2)*/
 }

@@ -90,9 +90,6 @@ class Player{ // Dannelsen af selveste player tanksne, hvilket vi vil gøre brug
                     Player1.PlayerXPosition+Player1.PlayerWidth <= WallsArr[j].Xpos+WallsArr[j].Width
                     
                     
-                    
-                    
-                    
                     )
                     
                     
