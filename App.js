@@ -85,22 +85,9 @@ function Gamedrawer(){
         Player2Bullet.BulletTimer(Player2Bullet)
         
     }
-    
-    /*var TankFrontXPos = Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
-    var TankFrontYPos = Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
-    ctx.FillStyle = 'Red'
-    ctx.fillRect(0,TankFrontYPos,5,5)
-    ctx.fillRect(TankFrontXPos,0,5,5)*/
 
-    /*
-    var TankBackXPos = Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(-Player1.PlayerHeight/2)
-    var TankBackYPos = Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)
-    ctx.FillStyle = 'Red'
-    ctx.fillRect(0,TankBackYPos,5,5)
-    ctx.fillRect(TankBackXPos,0,5,5)
-    */
-
-    /*
+    //Til visning af hvordan skudets start position findes
+/*
     var Radians = Math.PI/180; 
 
     var TankCentrumXPos1 = Player1.PlayerXPosition+(Player1.PlayerWidth/2)
@@ -113,94 +100,25 @@ function Gamedrawer(){
     
         Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
         Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
-        3,3)
-        */
-
-    /*ctx.fillStyle = 'Red'
-    ctx.fillRect(0,0,300,150)*/
-
-    //ctx.fillRect(0,Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),5,5)
-    //ctx.fillRect(Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),0,5,5)
+        3,3)*/
+        
 
 
-    // Collision with wall tester
+
+//Til visning af demo version til tanks collision detektion med væggene
+/*
     var Radians = Math.PI/180; 
 
-    /*ctx.fillStyle = 'Red'
-    ctx.fillRect(   Player1.PlayerXPosition,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-                    
+                    ctx.fillStyle = 'Red'
+    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(-Player1.PlayerHeight/2)*0.9,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.8,
                     2,2)
 
     ctx.fillStyle = 'yellow'
-    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-                    
-                    2,2)
-
-    ctx.fillStyle = 'Green'
-    ctx.fillRect(   Player1.PlayerXPosition,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-                    
-                    2,2)
-
-    ctx.fillStyle = 'Black'
-    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-                    
-                    2,2)
-
-    ctx.fillStyle = 'Cyan'
-    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
-                    Player1.PlayerYPosition,
-                    
-                    3,3)
-    ctx.fillStyle = 'Orange'
-    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
-                    Player1.PlayerYPosition,
+    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)-Math.sin(+Player1.PlayerAngle*Radians)*(-Player1.PlayerHeight/2)*0.9,
+                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.8,
                     
                     2,2)*/
 
 
-    //ctx.fillStyle = 'Red'
-    //ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
-    //                Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-    //                
-    //                2,2)
-
-    ctx.fillStyle = 'Red'
-    ctx.fillRect(   Player1.PlayerXPosition+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
-                    Player1.PlayerYPosition,
-                    
-                    2,2)
-
-
-    /*ctx.fillStyle = 'yellow'
-    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)-Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-                    
-                    2,2)
-
-    ctx.fillStyle = 'Green'
-    ctx.fillRect(   Player1.PlayerXPosition,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-                    
-                    2,2)
-
-    ctx.fillStyle = 'Black'
-    ctx.fillRect(   Player1.PlayerXPosition+Player1.PlayerWidth,
-                    Player1.PlayerYPosition+(Player1.PlayerHeight/2)+Math.cos(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.7,
-                    
-                    2,2)
-
-    ctx.fillStyle = 'Cyan'
-    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2)*0.5,
-                    Player1.PlayerYPosition,
-                    
-                    3,3)
-    ctx.fillStyle = 'Orange'
-    ctx.fillRect(   Player1.PlayerXPosition+(Player1.PlayerWidth/2)+Math.sin(+Player1.PlayerAngle*Radians)*(Player1.PlayerHeight/2),
-                    Player1.PlayerYPosition,
-                    
-                    2,2)*/
 }
